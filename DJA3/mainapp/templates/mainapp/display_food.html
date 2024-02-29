@@ -1,0 +1,16 @@
+<!-- mainapp templates mainapp display_food.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Display Food</title>
+</head>
+
+<body>
+    <h1>{{ food_name }}</h1>
+    <img src="{% static 'sushi.jpg' %}" alt="{{ food_name }} Image" width="300" height="200">
+
+</body>
+
+</html>
