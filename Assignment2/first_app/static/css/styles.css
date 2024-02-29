@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+}
+
+h1, p {
+    margin: 0;
+    padding: 5px;
+}
+
+h1 {
+    border: 2px solid black;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+p {
+    color: black;
+    border: 2px solid black;
+}
+

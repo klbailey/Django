@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Home Page</title>
+</head>
+<body>
+    <div class="container">
+        <p>The current time and date:</p>
+        <br>
+        <!-- <h1>{{ current_time }}</h1> -->
+        <h1>
+            {{ current_time.date|date:"M d, Y" }}<br>
+            {{ current_time.time|time:"g:i A" }}
+        </h1>
+    </div>
+</body>
+</html>
