@@ -1,0 +1,26 @@
+<!-- main_app/templates/main_app/form.html -->
+<!-- RENDERS FORM BEFORE USER INPUT-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form</title>
+    <style>
+        body {
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Data submitted  using http post method/specifies URL that form data whould be sent
+    action='{% url 'form_view' %}; tells form when someone wubmits, send info to a 
+    place 'form_view' on the server/destination where form data goes for processing (render on view)  -->
+    <form method="post" action="{% url 'form_view' %}">
+        <!-- Built-in feature-Adds security token to form protects from certain attacks -->
+        {% csrf_token %}
+        <!-- Template tag/shortcut to show form on webpage/automatically creates paragraphs
+        for each part of form -->
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
