@@ -12,7 +12,7 @@ to the browser
 **Assignment2:**
 Display current time and date on html page
 
-****Assignment 3: ****
+******Assignment 3:** ****
 Routing practice:
 
 Create a new Django project
@@ -25,3 +25,24 @@ Create a new Django project
 
 /display-vacation this will render a template that displays your favorite vacation destination in h1 tags including an image of that destination.
 
+**Assignment 4:**
+
+Part 1:
+
+Render an HTML page that prints out in h1 tags:
+
+first name
+
+last name
+
+favorite food
+
+favorite vacation destination.
+
+Make sure this data comes from the views.py
+
+Part 2:
+
+Create a form that contains 4 different fields: First Name, Last Name, Email, Favorite food.
+
+Once that data is submitted print it on a separate html page
