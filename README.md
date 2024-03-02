@@ -46,3 +46,11 @@ Part 2:
 Create a form that contains 4 different fields: First Name, Last Name, Email, Favorite food.
 
 Once that data is submitted print it on a separate html page
+
+**Assignment 5:**
+To test your knowledge on session. Create a program that displays a number.
+This number will start at 0 when you first visit your webpage.
+Every time you refresh the page the counter should increment by one.
+When you visit localhost:8000/addtwo the counter should increment by two.
+When you visit localhost:8000/reset the counter should reset back to 0.
+
