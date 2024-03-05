@@ -1,0 +1,73 @@
+<!-- main_app/templates/main_app/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            margin: 75px;
+            align-items: center;
+            background-color: rgb(190, 206, 206);
+        }
+        form {
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .post-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .post {
+            margin-bottom: 10px;
+        }
+        .submit {
+            margin-left: auto;
+            margin-right: auto;
+            display: block; 
+            padding: 5px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .submit:hover {
+            background-color: teal;
+        }
+        form input[type="text"],
+        form textarea {
+            width: 100%; 
+            box-sizing: border-box; 
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="{% url 'addpost' %}" method="POST">
+        <!-- <p>Posts:</p> -->
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <input class="submit" type="submit" value="Submit">
+    </form>
+    <br><br>
+
+    <!-- Display posts in separate containers -->
+    {% for post in posts %}
+        <div class="post-container">
+            {{ post.post }}
+        </div>
+    {% endfor %}
+
+    <!-- Display form errors -->
+    {% if form.errors %}
+        <p style="color: red;">{{ form.errors }}</p>
+    {% endif %}
+    <br>
+    {{ insert_me }}
+</body>
+
+</html>
