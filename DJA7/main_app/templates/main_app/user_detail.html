@@ -1,0 +1,33 @@
+<!-- main_app/templates/main_app/user_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Detail</title>
+    <style>
+        body {
+            margin: 450px;
+            margin-top: 95px;
+            align-items: center;
+            background-color: rgb(190, 206, 206);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>User Detail</h2>
+
+    <p><strong>Name:</strong> {{ user_profile.name }}</p>
+    <p><strong>Height:</strong> {{ user_profile.height }} cm</p>
+    <p><strong>Weight:</strong> {{ user_profile.weight }} lbs</p>
+    <p><strong>Dietary Preference:</strong> {{ user_profile.get_diet_display }}</p>
+    <br>
+    <a href="{% url 'home' %}">Back to Home</a>
+
+</body>
+
+</html>

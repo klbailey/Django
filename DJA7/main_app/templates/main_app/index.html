@@ -1,0 +1,87 @@
+<!-- main_app>templates>main_app>index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 7 - Home Page</title>
+    <style>
+        body {
+            margin: 350px;
+            margin-top: 100px;
+            align-items: center;
+            background-color: rgb(190, 206, 206);
+        }
+
+        form {
+            text-align: left;
+            border: 2px solid #ddd;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .post-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            margin-left: 300px;
+            margin-right: 300px;
+        }
+
+        .post {
+            margin-bottom: 10px;
+        }
+
+        .submit {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            padding: 5px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit:hover {
+            background-color: teal;
+        }
+
+        form input[type="text"],
+        form textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--  create an HTML form w/ action attribute set to the URL named 'home'. 
+    Specifies that form data should be submitted using the POST method. -->
+    <form action="{% url 'home' %}" method="POST">
+        <!-- Cross-Site Request Forgery token in form for security -->
+        {% csrf_token %}
+        <!-- Render form fiels in a series of paragraphs -->
+        {{ form.as_p }}
+        <br>
+        <input class="submit" type="submit" value="Submit">
+    </form>
+    <br><br>
+
+    <!-- Display user names as hyperlinks -->
+    <!-- iterate over ea user profile in 'user_profiles query'-->
+    {% for user_profile in user_profiles %}
+    <div class="post-container">
+        <!-- hyperlink for ea user profile name(user_detail w/ID as param) -->
+        <a href="{% url 'user_detail' user_profile.id %}">{{ user_profile.name }}</a>
+    </div>
+    {% endfor %}
+</body>
+
+</html>
