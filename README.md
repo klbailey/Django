@@ -11,7 +11,7 @@ to the browser
 **Assignment2:**
 Display current time and date on html page
 
-******Assignment 3:** ****
+**Assignment 3:** 
 Routing practice:
 Create a new Django project
 / this will render a template that displays "INDEX" in h1 tags.
@@ -44,4 +44,13 @@ Post Creator:
 Create a form that has one input. The input should be a text-area called "post"
 When the user submits the form the post should be added to the data base
 Whenever a new post gets added it should display on the template that contains the form.
+
+**Assignment 7:**
+User Creator:
+Create a form that has 4 inputs that will belong to one user, Name, Height (In centimeters), Weight(in lbs), and Dietary preference (Vegitarian, Vegan, No preferance)
+When the user submits the form the 4 form inputs should be added to the database as 1 user.
+Whenever a new user gets added the user's name should be displayed on the homepage.
+The user's name should be nested in a hyper link.
+When the link is clicked then it should redirect to a different template with the user information.
+
 
