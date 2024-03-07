@@ -54,5 +54,5 @@ The user's name should be nested in a hyper link.
 When the link is clicked then it should redirect to a different template with the user information.
 
 **Assignment 8:**
-Many To ONe Relationship Assignment
+Many To One Relationship Assignment
 
