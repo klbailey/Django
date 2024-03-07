@@ -53,4 +53,6 @@ Whenever a new user gets added the user's name should be displayed on the homepa
 The user's name should be nested in a hyper link.
 When the link is clicked then it should redirect to a different template with the user information.
 
+**Assignment 8:**
+Many To ONe Relationship Assignment
 
