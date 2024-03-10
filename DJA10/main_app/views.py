@@ -1,8 +1,10 @@
 # DJA10>main_app>views.py
 from django.shortcuts import render, redirect
-from django.contrib.auth import login as auth_login, authenticate #import alias?
+from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth.forms import AuthenticationForm  # Import AuthenticationForm
-from .forms import RegistrationForm, CustomLoginForm
+from django.contrib.auth.decorators import login_required
+from .forms import RegistrationForm, CustomLoginForm, PostForm
+from .models import Post
 # Create your views here.
 
 def register(request):
@@ -34,9 +36,22 @@ def register(request):
 
     # return render(request, 'registration/register.html', {'form': form})
 
+@login_required
 def news_feed(request):
-    # Add logic to fetch and display news feed content
-    return render(request, 'main_app/news_feed.html')
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            return redirect('news_feed')
+    else:
+        form = PostForm()
+
+    # Fetch all posts and display them in reverse chronological order
+    posts = Post.objects.all().order_by('-created_at')
+
+    return render(request, 'main_app/news_feed.html', {'form': form, 'posts': posts, 'user': request.user})
 
 
 def user_login(request):

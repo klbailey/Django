@@ -1,10 +1,11 @@
 <!-- DJA10>main_app>templates>main_app>base.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}CodeWarp Chronicles{% endblock %}</title>  
+    <title>{% block title %}CodeWarp Chronicles{% endblock %}</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -13,32 +14,27 @@
             margin: 0;
             padding: 0;
         }
-
         header {
             background-color: teal;
             color: #fff;
             padding: 10px;
             text-align: center;
         }
-
         nav {
             background-color: #333;
             color: #fff;
             padding: 10px;
         }
-
         nav ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
             text-align: center;
         }
-
         nav li {
             display: inline;
             margin-right: 10px;
         }
-
         nav a {
             text-decoration: none;
             color: teal;
@@ -46,7 +42,6 @@
         main {
             padding: 20px;
         }
-
         footer {
             background-color: teal;
             color: #fff;
@@ -56,15 +51,13 @@
             bottom: 0;
             width: 100%;
         }
-
         .footer-content {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
-
-        /* Styling for the registration form */
+       /* Styling for the registration form */
         form {
             max-width: 400px;
             margin: 0 auto;
@@ -74,7 +67,6 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 25px;
         }
-
         form input,
         form button {
             width: 100%;
@@ -85,22 +77,60 @@
             border-radius: 4px;
             font-size: 16px;
         }
-
         form button {
             background-color: teal;
             color: #fff;
             cursor: pointer;
         }
-
-    </style>  
+        .news-feed-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .post-form {
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+        .post-container {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .post {
+            margin-bottom: 15px;
+            border-bottom: 2px solid teal;
+            padding-bottom: 10px;
+        }
+        .post-details {
+            font-size: 14px;
+            color: #888;
+        }
+        .post-form textarea,
+        .post-form input[type="text"],
+        .post-form input[type="email"],
+        .post-form input[type="password"] {
+            width: 100% !important;
+            box-sizing: border-box;
+        }
+        /*  */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>CodeWarp Chronicles</h1>
         <nav>
             <ul>
-                <li{% if request.path|slice:'1:' == '/register/' %} class="active"{% endif %}><a href="{% url 'register' %}">Register</a></li>&nbsp;
-                <li{% if request.path|slice:'1:' == '/login/' %} class="active"{% endif %}><a href="{% url 'user_login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>&nbsp;
+                <li><a href="{% url 'user_login' %}">Login</a></li>
             </ul>
         </nav>
         <!-- <nav>
@@ -110,11 +140,9 @@
             </ul>
         </nav> -->
     </header>
-
     <main>
         {% block content %}{% endblock %}
     </main>
-
     <footer>
         <div class="footer-content">
             Katherine Bailey Hines Design

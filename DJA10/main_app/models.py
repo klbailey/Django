@@ -51,3 +51,13 @@ class CustomUser(AbstractBaseUser):
     # is printed/used in string context
     def __str__(self):
         return self.email
+    
+# Post Model
+class Post(models.Model):
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.email} - {self.created_at}"
