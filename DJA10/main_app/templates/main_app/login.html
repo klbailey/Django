@@ -1,0 +1,29 @@
+<!-- DJA10>main_app>templates>main_app>login.html -->
+{% extends 'main_app/base.html' %}
+
+{% block content %}
+  <h2>Login</h2>
+  <form method="post" action="{% url 'user_login' %}">
+    {% csrf_token %}
+
+    <div>
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </div>
+    
+    <div>
+      {{ form.password.label_tag }}
+      {{ form.password }}
+    </div>
+    
+    {% if form.errors %}
+      <p style="color: red;">Please correct the errors below:</p>
+      {{ form.errors }}
+    {% endif %}
+
+    <br>
+    <button type="submit">Login</button>
+  </form>
+  <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+
+{% endblock %}
