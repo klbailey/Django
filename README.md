@@ -53,6 +53,16 @@ Whenever a new user gets added the user's name should be displayed on the homepa
 The user's name should be nested in a hyper link.
 When the link is clicked then it should redirect to a different template with the user information.
 
-**Assignment 8:**
-Many To One Relationship Assignment
+**Assignment 8 9 10:**
+Many To One Relationship Assignment duplicate example given
 
+**Assignment 10:**
+Login and Registration:
+The Registration form should have the following fields "First Name, Last Name, Email, Password"
+You MUST add the following validations to the data coming from both forms (server side):
+The user must have a first and last name that is longer than 1 character
+The email that the user is submitting must be a valid email (this can be done on the html side)
+Part 2
+When the user logins or registers successfully they are greeted with a page that resembles a news feed
+This news feed should have a form that prompts the user to create a post.
+Below that form would be all posts created by all the users that have added posts on the site.
