@@ -26,6 +26,13 @@ class CustomUserManager(BaseUserManager):
     def create_superuser(self, email, first_name, last_name, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+        # return self.create_user(email, first_name, last_name, password, **extra_fields)
+    
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
         return self.create_user(email, first_name, last_name, password, **extra_fields)
 
 # Extends AbstractBaseUser
@@ -46,6 +53,13 @@ class CustomUser(AbstractBaseUser):
     # Email for authentication; name required
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
+    # *********************************
+    is_superuser = models.BooleanField(default=False)
+    def has_module_perms(self, app_label):
+        return self.is_staff
+
+    def has_perm(self, perm, obj=None):
+        return self.is_staff
 
     # defines string representation of CustomUser instance and returns email when instance
     # is printed/used in string context
