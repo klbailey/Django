@@ -3,6 +3,7 @@
 
 {% block content %}
 <h2>Register</h2>
+<p>Already have an account? <a href="{% url 'user_login' %}">Login here</a></p>
 <form method="post" action="{% url 'register' %}">
   {% csrf_token %}
   <div>
@@ -36,5 +37,4 @@
   <br>
   <button type="submit">Register</button>
 </form>
-<p>Already have an account? <a href="{% url 'user_login' %}">Login here</a></p>
 {% endblock %}

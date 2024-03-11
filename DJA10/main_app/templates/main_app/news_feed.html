@@ -21,6 +21,13 @@
         background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background */
     }
 </style>
+
+<!-- Add the audio element without the loop attribute and autoplay directly -->
+<audio id="starWarsAudio" autoplay muted style="display: none;">
+    <source src="{% static 'main_app/audio/the-imperial-march.mp3' %}" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+
     <div class="news-feed-container">
         <h2 class="fade-in">Welcome to the News Feed {{ user.email }}!</h2>
         <form method="post" action="{% url 'news_feed' %}" class="post-form">
@@ -39,4 +46,13 @@
         </div>
     </div>
     <p style="color: #fff; font-size: 10px;">Photo by <a href="https://unsplash.com/photos/white-robot-toy-on-black-background-ggg_B1MeqQk" style="color: #fff;">Brian McGowan</a> on Unsplash</p>
+    <script>
+        // Remove the controls attribute to hide audio controls
+        var audio = document.getElementById('starWarsAudio');
+        audio.removeAttribute('controls');
+        
+        // Ensure JavaScript is enabled and start audio
+        audio.muted = false;
+        audio.play();
+    </script>  
 {% endblock %}

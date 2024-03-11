@@ -2,7 +2,29 @@
 {% extends 'main_app/base.html' %}
 
 {% block content %}
+{% load static %}
+<style>
+  body {
+    background-image: url('{% static "main_app/starwars2.jpg" %}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: teal;
+    margin: 0;
+    padding: 0;
+    height: 100vh;  
+  }
+  .photo-credit {
+    position: absolute;
+    bottom: 15px; /* distance from the bottom as needed */
+    left: 15px; /* distance from the left as needed */
+    color: #fff;
+    font-size: 10px;
+  }
+</style>
   <h2>Login</h2>
+
+  <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
   <form method="post" action="{% url 'user_login' %}">
     {% csrf_token %}
 
@@ -24,6 +46,5 @@
     <br>
     <button type="submit">Login</button>
   </form>
-  <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
-
+  <p class="photo-credit" style="color: #fff; font-size: 10px;">Photo by <a href="https://unsplash.com/photos/stormtrooper-minifigure-walking-on-the-sand-cPF2nlWcMY4" style="color: #fff;">Daniel K Cheung</a> on Unsplash</p>
 {% endblock %}
