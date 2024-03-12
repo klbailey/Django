@@ -1,0 +1,61 @@
+<!-- DJA10>main_app>templates>main_app>register.html -->
+{% extends 'main_app/base.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+  body {
+    background-image: url('{% static "main_app/starwars2.jpg" %}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: teal;
+    margin: 0;
+    padding: 0;
+    height: 100vh;  
+  }
+  .photo-credit {
+    position: absolute;
+    bottom: 15px; /* distance from the bottom as needed */
+    left: 15px; /* distance from the left as needed */
+    color: #fff;
+    font-size: 10px;
+  }
+</style>
+<h2>Register</h2>
+<p>Already have an account? <a href="{% url 'user_login' %}">Login here</a></p>
+<form method="post" action="{% url 'register' %}">
+  {% csrf_token %}
+  <div>
+    {{ form.first_name.label_tag }}
+    {{ form.first_name }}
+  </div>
+
+  <div>
+    {{ form.last_name.label_tag }}
+    {{ form.last_name }}
+  </div>
+
+  <div>
+    {{ form.email.label_tag }}
+    {{ form.email }}
+  </div>
+
+  <div>
+    {{ form.password1.label_tag }}
+    {{ form.password1 }}
+  </div>
+
+  <div>
+    {{ form.password2.label_tag }}
+    {{ form.password2 }}
+  </div>
+  {% if form.errors %}
+  <p style="color: red;">Please correct the errors below:</p>
+  {{ form.errors }}
+  {% endif %}
+  <br>
+  <button type="submit">Register</button>
+</form>
+<p class="photo-credit" style="color: #fff; font-size: 10px;">Photo by <a href="https://unsplash.com/photos/stormtrooper-minifigure-walking-on-the-sand-cPF2nlWcMY4" style="color: #fff;">Daniel K Cheung</a> on Unsplash</p>
+{% endblock %}
