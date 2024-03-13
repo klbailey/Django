@@ -5,6 +5,16 @@
 {% load static %}
 <style>
     body {
+        /* background-image: url('{% static "main_app/starwars3.jpg" %}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        color: teal;
+        margin: 0;
+        padding: 0; */
+        display: flex;
+        flex-direction: column;
+        /* min-height: 100vh; Ensure that the body takes up at least the full viewport height */
         background-image: url('{% static "main_app/starwars3.jpg" %}');
         background-size: cover;
         background-repeat: no-repeat;
@@ -13,12 +23,31 @@
         margin: 0;
         padding: 0;
     }
+
     .news-feed-container {
         /* Override or extend the existing styles for .news-feed-container */
         max-width: 800px;
         margin: 0 auto;
         padding: 20px;
         background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background */
+
+        flex: 1; /* Use flex: 1 to push the footer down */
+        overflow-y: auto; /* Enable vertical scroll when content overflows */
+    }
+
+    .post-container {
+        max-height: 400px; /*Set a maximum height for the container  */
+        overflow-y: auto;/* Enable vertical scroll when the content overflows */
+    }
+
+    .footer {
+        text-align: center;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.5);/* Add a semi-transparent black background*/
+        width: 100%;  
+        margin-top: auto; /* Ensure the footer is at the bottom */ 
+        position: sticky;
+        bottom: 0;
     }
 </style>
 
@@ -28,31 +57,35 @@
     Your browser does not support the audio element.
 </audio>
 
-    <div class="news-feed-container">
-        <h2 class="fade-in">Welcome to the News Feed {{ user.email }}!</h2>
-        <form method="post" action="{% url 'news_feed' %}" class="post-form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Post</button>
-        </form>
-        <div class="post-container">
-            <h3>All Posts</h3>
-            {% for post in posts %}
-                <div class="post">
-                    <p>{{ post.content }}</p>
-                    <p class="post-details">Posted by: {{ post.user.email }} on {{ post.created_at  }}</p>
-                </div>
-            {% endfor %}
+<div class="news-feed-container">
+    <h2 class="fade-in">Welcome to the News Feed {{ user.email }}!</h2>
+    <form method="post" action="{% url 'news_feed' %}" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Post</button>
+    </form>
+    <div class="post-container">
+        <h3>All Posts</h3>
+        {% for post in posts %}
+        <div class="post">
+            <p>{{ post.content }}</p>
+            <p class="post-details">Posted by: {{ post.user.email }} on {{ post.created_at }}</p>
         </div>
+        {% endfor %}
     </div>
-    <p style="color: #fff; font-size: 10px;">Photo by <a href="https://unsplash.com/photos/white-robot-toy-on-black-background-ggg_B1MeqQk" style="color: #fff;">Brian McGowan</a> on Unsplash</p>
-    <script>
-        // Remove the controls attribute to hide audio controls
-        var audio = document.getElementById('starWarsAudio');
-        audio.removeAttribute('controls');
-        
-        // Ensure JavaScript is enabled and start audio
-        audio.muted = false;
-        audio.play();
-    </script>  
+</div>
+
+<p style="color: #fff; font-size: 10px;">Photo by <a
+        href="https://unsplash.com/photos/white-robot-toy-on-black-background-ggg_B1MeqQk" style="color: #fff;">Brian
+        McGowan</a> on Unsplash</p>
+<script>
+    // Remove the controls attribute to hide audio controls
+    var audio = document.getElementById('starWarsAudio');
+    audio.removeAttribute('controls');
+
+    // Ensure JavaScript is enabled and start audio
+    audio.muted = false;
+    audio.play();
+</script>
+
 {% endblock %}

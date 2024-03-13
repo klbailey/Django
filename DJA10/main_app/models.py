@@ -60,6 +60,12 @@ class CustomUser(AbstractBaseUser):
 
     def has_perm(self, perm, obj=None):
         return self.is_staff
+    
+    def delete(self, *args, **kwargs):
+        # Delete related posts first
+        Post.objects.filter(user=self).delete()
+        # Call the parent class delete method
+        super().delete(*args, **kwargs)
 
     # defines string representation of CustomUser instance and returns email when instance
     # is printed/used in string context
